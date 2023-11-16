@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RequestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,9 +21,6 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::get('/cards', [RequestController::class, 'index'])->middleware(['auth', 'verified'])->name('cards');
-Route::get('/pokemon', [RequestController::class, 'index'])->middleware(['auth', 'verified'])->name('pokemon');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
