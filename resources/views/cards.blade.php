@@ -8,7 +8,7 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <form method="GET" action="{{ route('cards') }}">
             <input type="text" name="pokemonName" required>
-            <button type="submit">{{ __('Search') }}</button>
+            <x-primary-button type="submit">{{ __('Search') }}</x-primary-button>
         </form>
     </div>
 
