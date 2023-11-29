@@ -7,13 +7,13 @@ use GuzzleHttp\Client;
 
 class InfoController extends Controller
 {
-    public function index(Request $request, $name, $id ){
+    public function index(Request $request, $id ){
         $client = new Client();
        
         // $name = $request->input('name');
         // $id = $request->input('id');
        
-        $response = $client->request('GET', "https://api.pokemontcg.io/v2/cards?q=name:{$name} id:{$id}");
+        $response = $client->request('GET', "https://api.pokemontcg.io/v2/cards?q=id:{$id}");
         
         $data = json_decode($response->getBody()->getContents(), true);
         return view('cardinfo', ['cards' =>$data['data']]);

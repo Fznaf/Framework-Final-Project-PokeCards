@@ -11,9 +11,9 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     @foreach ($cards as $card)
                     <div class="text-gray-900 dark:text-gray-100 space-y-6">
+                        <img src="{{ $card['images']['small'] }}" alt = "{{__("Card Picture")}}">
                         <h2>{{$card['name']}}</h2>
                         {{$card['id']}}
-                        <img src="{{ $card['images']['small'] }}" alt = "{{__("Card Picture")}}">
                         <hr>
                     @endforeach
                 </div>

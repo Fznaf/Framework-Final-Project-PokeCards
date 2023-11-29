@@ -27,7 +27,7 @@ Route::get('/dashboard', function () {
 Route::get('/cards', [RequestController::class, 'index'])->middleware(['auth', 'verified'])->name('cards');
 Route::get('/pokemon', [RequestController::class, 'index'])->middleware(['auth', 'verified'])->name('pokemon');
 
-Route::get('/cardinfo/{name}/{id}', [InfoController::class, 'index'])->middleware(['auth', 'verified'])->name('cardinfo');
+Route::get('/cardinfo/{id}', [InfoController::class, 'index'])->middleware(['auth', 'verified'])->name('cardinfo');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

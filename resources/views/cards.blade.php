@@ -18,7 +18,7 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     @foreach ($cards as $card)
                     <div class="text-gray-900 dark:text-gray-100 space-y-6">
-                        <a href="{{ route('cardinfo', ['name' => $card['name'], 'id' => $card['id']]) }}">{{$card['name']}}</a>
+                        <a href="{{ route('cardinfo', ['id' => $card['id']]) }}">{{$card['name']}}</a>
                         <img src="{{ $card['images']['small'] }}" alt = "{{__("Card Picture")}}">
                         <hr>
                     @endforeach
