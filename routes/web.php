@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RequestController;
 use App\Http\Controllers\InfoController;
+use App\Http\Controllers\AddCardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,8 @@ Route::get('/dashboard', function () {
 
 Route::get('/cards', [RequestController::class, 'index'])->middleware(['auth', 'verified'])->name('cards');
 Route::get('/pokemon', [RequestController::class, 'index'])->middleware(['auth', 'verified'])->name('pokemon');
+
+Route::get('/add', [AddCardController::class, 'index'])->middleware(['auth', 'verified'])->name('addcard');
 
 Route::get('/cardinfo/{id}', [InfoController::class, 'index'])->middleware(['auth', 'verified'])->name('cardinfo');
 
