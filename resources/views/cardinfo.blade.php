@@ -1,4 +1,4 @@
-<x-app-layout>
+ <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Cards') }}
@@ -14,8 +14,14 @@
                         <img src="{{ $card['images']['small'] }}" alt = "{{__("Card Picture")}}">
                         <h2>{{$card['name']}}</h2>
                         {{$card['id']}}
+
                         <hr>
                     @endforeach
+                    <form method="POST" action="{{ route('favorite') }}">
+                        @csrf
+                        <input type="checkbox" name="favoriteCard" value="{{$card['id']}}" onchange="this.form.submit()">
+                        <input type="hidden" name="image" value="{{$card['images']['small']}}">
+                     </form>
                 </div>
             </div>
         </div>
