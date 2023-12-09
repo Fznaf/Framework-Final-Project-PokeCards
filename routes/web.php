@@ -6,6 +6,7 @@ use App\Http\Controllers\RequestController;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\AddCardController;
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,9 +23,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/cards', [RequestController::class, 'index'])->middleware(['auth', 'verified'])->name('cards');
 Route::get('/pokemon', [RequestController::class, 'index'])->middleware(['auth', 'verified'])->name('pokemon');

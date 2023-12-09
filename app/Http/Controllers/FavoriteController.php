@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Favorites;
 use App\Events\FavoriteCardMarking;
 use Illuminate\Support\Facades\Redirect;
 
@@ -17,6 +18,8 @@ class FavoriteController extends Controller
 
         event(new FavoriteCardMarking($userid, $cardid, $image));
 
-        return Redirect::route('dashboard');
+        $favorites = Favorites::where('userid', $userid)->get();
+
+        return Redirect::route('dashboard', ['favorites' => $favorites]);
     }
 }

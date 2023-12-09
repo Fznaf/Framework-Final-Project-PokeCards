@@ -10,6 +10,26 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     {{ __("You're logged in!") }}
+
+                    @if(!$favorites->isEmpty())
+                        <p>
+                        <div class ="text-gray-900 dark:text-gray-100 space-y-6">
+                        Here are your favorite cards
+                        @foreach($favorites as $favorite)
+
+                        <div class ="text-gray-900 dark:text-gray-100 space-y-6">
+                            <p>Card ID: {{ $favorite->cardid }}</p>
+                            <img src="{{ $favorite->image }}" alt="Image for card {{ $favorite->cardid }}">
+
+                        <hr>
+                    </div>
+                        
+                
+                        @endforeach
+                    </div>
+               
+                    @endif
+
                 </div>
             </div>
         </div>
