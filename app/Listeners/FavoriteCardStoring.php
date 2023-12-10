@@ -25,6 +25,7 @@ class FavoriteCardStoring
         DB::table('favorite_list')->insert([
             'userid' => $event->userid,
             'cardid' => $event->cardid,
+            'cardname' => $event->cardname,
             'image' => $event->image
         ]);
     }

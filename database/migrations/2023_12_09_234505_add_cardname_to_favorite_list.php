@@ -11,13 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('favorite_list', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-            $table->string('userid');
-            $table->string('cardid');
+        Schema::table('favorite_list', function (Blueprint $table) {
             $table->string('cardname');
-            $table->binary('image');
         });
     }
 
@@ -26,6 +21,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('favorite_list');
+        Schema::table('favorite_list', function (Blueprint $table) {
+        });
     }
 };

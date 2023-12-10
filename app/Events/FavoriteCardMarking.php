@@ -17,14 +17,16 @@ class FavoriteCardMarking
     public $userid;
     public $cardid;
     public $image;
+    public $cardname;
 
     /**
      * Create a new event instance.
      */
-    public function __construct($userid, $cardid, $image)
+    public function __construct($userid, $cardid, $image, $cardname)
     {
         $this->userid = $userid;
         $this->cardid = $cardid;
+        $this->cardname = $cardname;
         $this->image = $image;
     }
 

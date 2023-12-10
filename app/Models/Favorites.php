@@ -14,6 +14,7 @@ class Favorites extends Model
     protected $fillable = [
         'userid',
         'cardid',
+        'cardname',
         'image',
     ];
 }

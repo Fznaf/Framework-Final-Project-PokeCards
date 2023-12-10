@@ -21,6 +21,7 @@
                         @csrf
                         <input type="checkbox" name="favoriteCard" value="{{$card['id']}}" onchange="this.form.submit()">
                         <input type="hidden" name="image" value="{{$card['images']['small']}}">
+                        <input type="hidden" name="cardname" value="{{$card['name']}}">
                      </form>
                 </div>
             </div>

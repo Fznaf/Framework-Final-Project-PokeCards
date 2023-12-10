@@ -14,11 +14,13 @@
                     @if(!$favorites->isEmpty())
                         <p>
                         <div class ="text-gray-900 dark:text-gray-100 space-y-6">
+                        </p>
                         Here are your favorite cards
                         @foreach($favorites as $favorite)
 
                         <div class ="text-gray-900 dark:text-gray-100 space-y-6">
                             <p>Card ID: {{ $favorite->cardid }}</p>
+                            <p>Card Name: {{$favorite->cardname}}</p>
                             <img src="{{ $favorite->image }}" alt="Image for card {{ $favorite->cardid }}">
 
                         <hr>
