@@ -23,4 +23,12 @@ class FavoriteController extends Controller
 
         return Redirect::route('dashboard', ['favorites' => $favorites]);
     }
+    
+public function showFavorites()
+{
+    // Fetch favorites along with their associated comments
+    $favorites = Favorites::with('comments')->get();
+
+    return view('your_view', ['favoritesWithComments' => $favorites]);
+}
 }

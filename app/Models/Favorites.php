@@ -17,4 +17,10 @@ class Favorites extends Model
         'cardname',
         'image',
     ];
+public function comments()
+{
+    return $this->hasMany(Comment::class, 'favorite_list_id', 'id');
+}
+
+
 }

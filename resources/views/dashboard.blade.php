@@ -9,27 +9,33 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
+
                     {{ __("You're logged in!") }}
 
                     @if(!$favorites->isEmpty())
-                        <p>
-                        <div class ="text-gray-900 dark:text-gray-100 space-y-6">
-                        </p>
-                        Here are your favorite cards
+                        <p>Here are your favorite cards:</p>
+
                         @foreach($favorites as $favorite)
+                            <div class="text-gray-900 dark:text-gray-100 space-y-6">
+                                <p>Card ID: {{ $favorite->cardid }}</p>
+                                <p>Card Name: {{ $favorite->cardname }}</p>
+                                <img src="{{ $favorite->image }}" alt="Image for card {{ $favorite->cardid }}">
 
-                        <div class ="text-gray-900 dark:text-gray-100 space-y-6">
-                            <p>Card ID: {{ $favorite->cardid }}</p>
-                            <p>Card Name: {{$favorite->cardname}}</p>
-                            <img src="{{ $favorite->image }}" alt="Image for card {{ $favorite->cardid }}">
+                                <h2 class="text-lg font-bold mt-4 mb-2">Comments</h2>
 
-                        <hr>
-                    </div>
-                        
-                
+                                @forelse($favorite->comments as $comment)
+                                    <div class="mb-2">
+                                        <p class="text-gray-700">{{ $comment->user->name }} said:</p>
+                                        <p>{{ $comment->content }}</p>
+                                    </div>
+                                    <hr>
+                                @empty
+                                    <p>No comments yet.</p>
+                                @endforelse
+                            </div>
                         @endforeach
-                    </div>
-               
+                    @else
+                        <p>You don't have any favorite cards yet.</p>
                     @endif
 
                 </div>

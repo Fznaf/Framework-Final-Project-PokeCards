@@ -10,8 +10,8 @@ class DashboardController extends Controller
 {
     public function index()
 {
-    $favorites = Favorites::where('userid', Auth::id())->get();
+    $favorites = Favorites::where('userid', Auth::id())->with('comments:id,content')->get();
 
-    return view('dashboard', compact('favorites'));
-}
+    return view('dashboard', ['favorites' => $favorites]);
+}     
 }
