@@ -10,14 +10,14 @@ class CommentController extends Controller
     public function store(Request $request)
     {
         // Validate the request
-        $request->validate([
-            'favorite_list_id' => 'required|exists:favorites,id',
+       $request->validate([
+            'favorite_list_id' => 'required|exists:favorite_list,id',
             'content' => 'required|string',
         ]);
 
         // Create a new comment
         Comment::create([
-            'favorite_list_id' => $request->input('favorite_id'),
+            'favorite_list_id' => $request->input('favorite_list_id'),
             'content' => $request->input('content'),
             // You may also associate the comment with the authenticated user
             'user_id' => auth()->id(),
