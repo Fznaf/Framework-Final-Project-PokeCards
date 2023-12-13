@@ -32,6 +32,16 @@
                                 @empty
                                     <p>No comments yet.</p>
                                 @endforelse
+
+                                {{-- Comment Box --}}
+                                <form method="post" action="{{ route('add.comment') }}">
+                                    @csrf
+                                    <input type="hidden" name="favorite_id" value="{{ $favorite->id }}">
+                                    <textarea name="content" placeholder="Add a comment..." rows="2" class="w-full"></textarea>
+                                    <button type="submit" class="mt-2 bg-blue-500 text-white px-4 py-2">Submit Comment</button>
+                                </form>
+                                {{-- End Comment Box --}}
+
                             </div>
                         @endforeach
                     @else

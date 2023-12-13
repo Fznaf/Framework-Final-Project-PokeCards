@@ -2,29 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Comment;
 use Illuminate\Http\Request;
+use App\Models\Comment;
 
-class CommentController extends Controller{
-public function index()
+class CommentController extends Controller
 {
-    $comments = Comment::all();
-    return view('comments.index', compact('comments'));
-}
+    public function store(Request $request)
+    {
+        // Validate the request
+        $request->validate([
+            'favorite_list_id' => 'required|exists:favorites,id',
+            'content' => 'required|string',
+        ]);
 
-public function store(Request $request)
-{
-    $request->validate([
-        'content' => 'required',
-        'favorite_list_id' => 'required|exists:posts,id',
-    ]);
+        // Create a new comment
+        Comment::create([
+            'favorite_list_id' => $request->input('favorite_id'),
+            'content' => $request->input('content'),
+            // You may also associate the comment with the authenticated user
+            'user_id' => auth()->id(),
+        ]);
 
-    Comment::create([
-        'user_id' => auth()->user()->id,
-        'favorite_list_id' => $request->favorite_list_id,
-        'content' => $request->content,
-    ]);
-
-    return back()->with('success', 'Comment added successfully.');
-}
+        // Redirect back or wherever you want after submitting the comment
+        return redirect()->back();
+    }
 }

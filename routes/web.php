@@ -7,6 +7,7 @@ use App\Http\Controllers\InfoController;
 use App\Http\Controllers\AddCardController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', [DashboardController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::post('/add-comment', [CommentController::class, 'store'])->name('add.comment');
 
 Route::get('/cards', [RequestController::class, 'index'])->middleware(['auth', 'verified'])->name('cards');
 Route::get('/pokemon', [RequestController::class, 'index'])->middleware(['auth', 'verified'])->name('pokemon');
