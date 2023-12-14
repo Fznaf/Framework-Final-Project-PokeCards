@@ -23,7 +23,7 @@
 
                                 <h2 class="text-lg font-bold mt-4 mb-2">Comments</h2>
 
-                                @forelse($favorite->comments as $comment)
+                                @forelse($comments as $comment)
                                     <div class="mb-2">
                                         <p class="text-gray-700">{{ $comment->user->name }} said:</p>
                                         <p>{{ $comment->content }}</p>
